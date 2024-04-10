@@ -12,4 +12,15 @@ const server = app.listen(env.port, () => {
 
 
 // TODO Exercise 1: Use Sigterm handling to shut down gracefully
-// ...
+process.on('SIGTERM', () => {
+    console.log('The service is about to shut down!');
+    
+    server.close(() => {
+        console.log('TMS API server shut down.');
+
+        process.exit(0);
+    });
+    // Finish any outstanding requests, then...
+    
+});
+
