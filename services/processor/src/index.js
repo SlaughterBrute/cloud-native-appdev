@@ -74,6 +74,8 @@ const processor = async () => {
       //
       // TODO Exercise 4-4: For each message, send DeleteMessageCommand to instruct the queue the the message has been handled and can be removed.
       // ...
+      await delay(1000);
+
       await client.send( new DeleteMessageCommand({
         QueueUrl: process.env.COPILOT_QUEUE_URI,
         ReceiptHandle: ReceiptHandle,
